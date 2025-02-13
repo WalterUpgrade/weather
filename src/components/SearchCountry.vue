@@ -49,7 +49,7 @@ const getWeather = async (id) => {
         <i class="fa-solid fa-magnifying-glass p-2 text-indigo-600"></i>
         <input
           type="text"
-          placeholder="Search for a place"
+          placeholder="Enter a city"
           class="rounded-r-lg p-2 border-0 outline-0 focus:ring-2 focus:ring-indigo-600 ring-inset w-full"
           v-model="searchTerm.query"
           @input="handleSearch"

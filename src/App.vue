@@ -19,15 +19,13 @@ const deletePlace = (name) => {
   <main>
     <!-- Date -->
     <div class="text-center mb-6">
-      {{
-        new Date().toLocaleDateString('en-us', {
-          weekday: 'long',
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric'
-        })
-      }}
-    </div>
+  <span class="text-white mr-2">{{ 
+    new Date().toLocaleDateString('en-us', { weekday: 'long' }) 
+  }}</span>
+  <span class="text-gray-400">{{
+    new Date().toLocaleDateString('en-us', { month: 'long', day: 'numeric', year: 'numeric' })
+  }}</span>
+</div>
 
     <!-- Search -->
     <div>
@@ -35,7 +33,7 @@ const deletePlace = (name) => {
     </div>
 
     <!-- Weather cards -->
-    <div class="grid grid-cols-2 gap-4">
+    <div class="grid grid-cols-1 mt-10 sm:grid-cols-2 gap-4">
       <div v-for="(place, idx) in places" :key="idx">
         <WeatherCard :place="place" @delete-place="deletePlace" />
       </div>

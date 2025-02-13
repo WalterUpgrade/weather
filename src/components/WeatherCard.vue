@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import Border from './Border.vue'
+import Border from './BorderBorder.vue'
 import PronosticoDay from './PronosticoDay.vue'
 import InfoClima from './InfoClima.vue'
 
