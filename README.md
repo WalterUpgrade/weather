@@ -1,5 +1,5 @@
-# Vue 3 + Vite
-WeatherAPI 
+# Vue + Vite
+WeatherAPI 3 dias
 🌎 Fuentes de Datos
 
 Estaciones meteorológicas oficiales.
