@@ -3,15 +3,15 @@ import { ref } from 'vue'
 import SearchCountry from './components/SearchCountry.vue'
 import WeatherCard from './components/WeatherCard.vue'
 
-const places = ref([])
+const cities = ref([])
 
-const addPlace = (data) => {
-  places.value.push(data)
+const Lugares = (data) => {
+  cities.value.push(data)
 }
 
-const deletePlace = (name) => {
+const deleteLugares = (name) => {
   if (confirm('Are you sure')) {
-    places.value = places.value.filter((p) => p.location.name !== name)
+    cities.value = cities.value.filter((p) => p.location.name !== name)
   }
 }
 </script>
@@ -29,13 +29,13 @@ const deletePlace = (name) => {
 
     <!-- Search -->
     <div>
-      <SearchCountry @place-data="addPlace" />
+      <SearchCountry @place-data="Lugares" />
     </div>
 
     <!-- Weather cards -->
     <div class="grid grid-cols-1 mt-10 sm:grid-cols-2 gap-4">
-      <div v-for="(place, idx) in places" :key="idx">
-        <WeatherCard :place="place" @delete-place="deletePlace" />
+      <div v-for="(place, idx) in cities" :key="idx">
+        <WeatherCard :place="place" @delete-place="deleteLugares" />
       </div>
     </div>
   </main>

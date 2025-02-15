@@ -8,12 +8,12 @@ defineProps({
   place: Object
 })
 
-const emit = defineEmits(['delete-place'])
+const issue = defineEmits(['delete-place'])
 
 const showDetail = ref(false)
 
-const removePlace = (placeName) => {
-  emit('delete-place', placeName)
+const eliminarLugar = (placeName) => {
+  issue('delete-place', placeName)
   showDetail.value = false
 }
 </script>
@@ -59,7 +59,7 @@ const removePlace = (placeName) => {
         <InfoClima
           :place="place"
           @close-info="showDetail = false"
-          @remove-place="removePlace(place.location.name)"
+          @remove-place="eliminarLugar(place.location.name)"
         />
       </div>
     </Transition>

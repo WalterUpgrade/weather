@@ -1,7 +1,7 @@
 <script setup>
 import { reactive } from 'vue'
 
-const emit = defineEmits(['place-data'])
+const issue = defineEmits(['place-data'])
 
 const searchTerm = reactive({
   query: '',
@@ -9,12 +9,12 @@ const searchTerm = reactive({
   results: null
 })
 
-const handleSearch = () => {
+const busqueda = () => {
   clearTimeout(searchTerm.timeout)
   searchTerm.timeout = setTimeout(async () => {
     if (searchTerm.query !== '') {
       const res = await fetch(
-        `http://api.weatherapi.com/v1/search.json?key=ba90483f5bb34269b37123337251302&q=${searchTerm.query}`
+        `http://api.weatherapi.com/v1/search.json?key=${searchTerm.query}`
       )
 
       const data = await res.json()
@@ -26,15 +26,15 @@ const handleSearch = () => {
   }, 500)
 }
 
-const getWeather = async (id) => {
+const takeWeather = async (id) => {
   const res = await fetch(
-    `http://api.weatherapi.com/v1/forecast.json?key=ba90483f5bb34269b37123337251302&q=id:${id}&days=3&aqi=yes&alerts=yes`
+    `http://api.weatherapi.com/v1/forecast.json?key==id:${id}&days=3&aqi=yes&alerts=yes`
   )
 
   const data = await res.json()
   console.log(data)
 
-  emit('place-data', data)
+  issue('place-data', data)
 
   searchTerm.query = ''
   searchTerm.results = null
@@ -52,7 +52,7 @@ const getWeather = async (id) => {
           placeholder="Enter a city"
           class="rounded-r-lg p-2 border-0 outline-0 focus:ring-2 focus:ring-indigo-600 ring-inset w-full"
           v-model="searchTerm.query"
-          @input="handleSearch"
+          @input="busqueda"
         />
       </div>
     </form>
@@ -61,7 +61,7 @@ const getWeather = async (id) => {
       <div v-if="searchTerm.results !== null">
         <div v-for="place in searchTerm.results" :key="place.id">
           <button
-            @click="getWeather(place.id)"
+            @click="takeWeather(place.id)"
             class="px-3 my-2 hover:text-indigo-600 hover:font-bold w-full text-left"
           >
             {{ place.name }}, {{ place.region }}, {{ place.country }}
