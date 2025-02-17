@@ -17,7 +17,7 @@ const deleteLugares = (name) => {
 </script>
 <template>
   <main>
-    <!-- Date -->
+    <!-- Fecha -->
     <div class="text-center mb-6">
   <span class="text-white mr-2">{{ 
     new Date().toLocaleDateString('en-us', { weekday: 'long' }) 
@@ -27,12 +27,12 @@ const deleteLugares = (name) => {
   }}</span>
 </div>
 
-    <!-- Search -->
+    <!-- Busqueda -->
     <div>
       <SearchCountry @place-data="Lugares" />
     </div>
 
-    <!-- Weather cards -->
+    <!-- Tarjeta Meteorologica -->
     <div class="grid grid-cols-1 mt-10 sm:grid-cols-2 gap-4">
       <div v-for="(place, idx) in cities" :key="idx">
         <WeatherCard :place="place" @delete-place="deleteLugares" />

@@ -14,7 +14,8 @@ const busqueda = () => {
   searchTerm.timeout = setTimeout(async () => {
     if (searchTerm.query !== '') {
       const res = await fetch(
-        `http://api.weatherapi.com/v1/search.json?key=${searchTerm.query}`
+    `http://api.weatherapi.com/v1/search.json?key={YOUR_API_KEY}=${searchTerm.query}`
+
       )
 
       const data = await res.json()
@@ -28,7 +29,7 @@ const busqueda = () => {
 
 const takeWeather = async (id) => {
   const res = await fetch(
-    `http://api.weatherapi.com/v1/forecast.json?key==id:${id}&days=3&aqi=yes&alerts=yes`
+    `http://api.weatherapi.com/v1/forecast.json?key={YOUR_API_KEY}=id:${id}&days=3&aqi=yes&alerts=yes`
   )
 
   const data = await res.json()
@@ -43,9 +44,9 @@ const takeWeather = async (id) => {
 
 <template>
   <div>
-    <!-- search field -->
+    <!-- campo de busqueda -->
     <form>
-      <div class="bg-white border border-indigo-600/30 rounded-lg shadow-lg flex items-center">
+      <div class="bg-white border border-indigo-600/30 rounded-lg shadow-lg flex items-center w-full max-w-md">  
         <i class="fa-solid fa-magnifying-glass p-2 text-indigo-600"></i>
         <input
           type="text"
@@ -56,7 +57,7 @@ const takeWeather = async (id) => {
         />
       </div>
     </form>
-    <!-- search suggestions -->
+    <!-- sugerencias de busqueda -->
     <div class="bg-white my-2 rounded-lg shadow-lg">
       <div v-if="searchTerm.results !== null">
         <div v-for="place in searchTerm.results" :key="place.id">
