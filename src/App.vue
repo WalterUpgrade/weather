@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
-import SearchCountry from './components/SearchCountry.vue'
-import WeatherCard from './components/WeatherCard.vue'
+import SearchCountry from './components/api/SearchCountry.vue'
+import WeatherCard from './components/common/WeatherCard.vue'
 
 const cities = ref([])
 
